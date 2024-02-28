@@ -1,4 +1,4 @@
 {
   "presets": ["next/babel"],
-  "plugins": ["./infra/enable-ssr.js"]
+  "plugins": ["./babel-plugin-nextjs-dynamic-rendering.js"]
 }
