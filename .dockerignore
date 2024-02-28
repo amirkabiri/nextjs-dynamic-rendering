@@ -4,3 +4,6 @@ node_modules/
 .gitignore
 out/
 .next
+
+# local env files
+.env*.local
