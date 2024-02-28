@@ -1,0 +1,16 @@
+FROM node:20.5.0-alpine3.18 as builder
+
+WORKDIR /app
+
+COPY ["package.json", "yarn.lock", "/app/"]
+
+RUN yarn install
+
+COPY [".", "/app/"]
+
+RUN npm run build:csr
+
+FROM nginx:1.25.1-alpine3.17 as prod
+
+COPY --chown=nginx:nginx --from=builder ["/app/out", "/usr/share/nginx/html"]
+COPY ["./infra/nginx-csr.conf", "/etc/nginx/conf.d/default.conf"]

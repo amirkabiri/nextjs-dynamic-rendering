@@ -1,38 +1,97 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## Benchmarks
+### SSR
+```shell
+ab -n 100 -c 10 -H "User-Agent: google" http://localhost/
 ```
+```
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Benchmarking localhost (be patient).....done
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Server Software:        nginx/1.25.1
+Server Hostname:        localhost
+Server Port:            80
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Document Path:          /
+Document Length:        5525 bytes
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Concurrency Level:      10
+Time taken for tests:   3.883 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      582500 bytes
+HTML transferred:       552500 bytes
+Requests per second:    25.75 [#/sec] (mean)
+Time per request:       388.286 [ms] (mean)
+Time per request:       38.829 [ms] (mean, across all concurrent requests)
+Transfer rate:          146.50 [Kbytes/sec] received
 
-## Learn More
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    2   2.3      1      12
+Processing:   157  276 181.7    212    1105
+Waiting:      156  275 181.8    212    1103
+Total:        158  277 181.7    213    1109
 
-To learn more about Next.js, take a look at the following resources:
+Percentage of the requests served within a certain time (ms)
+  50%    213
+  66%    256
+  75%    271
+  80%    283
+  90%    592
+  95%    720
+  98%    993
+  99%   1109
+ 100%   1109 (longest request)
+```
+### CSR
+```shell
+ab -n 100 -c 10 http://localhost/
+```
+```
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Benchmarking localhost (be patient).....done
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+Server Software:        nginx/1.25.1
+Server Hostname:        localhost
+Server Port:            80
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Document Path:          /
+Document Length:        1146 bytes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Concurrency Level:      10
+Time taken for tests:   0.163 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      138000 bytes
+HTML transferred:       114600 bytes
+Requests per second:    613.59 [#/sec] (mean)
+Time per request:       16.297 [ms] (mean)
+Time per request:       1.630 [ms] (mean, across all concurrent requests)
+Transfer rate:          826.91 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    4   3.8      2      13
+Processing:     3   10   5.0      9      21
+Waiting:        2    7   3.0      6      14
+Total:          6   14   6.1     14      29
+
+Percentage of the requests served within a certain time (ms)
+  50%     14
+  66%     17
+  75%     19
+  80%     19
+  90%     22
+  95%     26
+  98%     29
+  99%     29
+ 100%     29 (longest request)
+```

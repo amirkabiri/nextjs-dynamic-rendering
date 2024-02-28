@@ -1,0 +1,16 @@
+{
+  "printWidth": 90,
+  "editor.formatOnSave": true,
+  "tabWidth": 2,
+  "requireConfig": false,
+  "useTabs": false,
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "semi": true,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "html.format.wrapLineLength": 80,
+  "html.format.wrapAttributes": "force-expand-multiline",
+  "arrowParens": "always",
+  "importOrderSortSpecifiers": true
+}

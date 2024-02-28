@@ -1,11 +1,13 @@
 {
-  "name": "my-app",
+  "name": "nextjs-dynamic-rendering",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build:csr": "next build",
+    "build:ssr": "NEXT_PUBLIC_SSR=true next build",
+    "serve:csr": "npx serve ./out",
+    "serve:ssr": "NEXT_PUBLIC_SSR=true next start",
     "lint": "next lint"
   },
   "dependencies": {
